@@ -1,0 +1,85 @@
+---
+title: "hw2"
+author: "Rohan Mishra | Github User: rohmish"
+date: "2/7/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Problem 1
+```{r}
+cel <- c((24-32)*(5/9), (15-32)*(5/9))
+cel
+```
+## Problem 2
+```{r}
+vec200 = 0
+  for (i in 1:200){
+    if ((i%%2)==0)
+      vec200[i] = 1
+    else
+      vec200[i] = 3
+    print(vec200[i])
+  }
+```
+## Problem 3
+```{r}
+numperfect = 0
+for (i in 1:2001){
+  if(sqrt(i)%%1==0)
+    numperfect=numperfect+1
+}
+numperfect
+```
+## install mpg
+```{r cars}
+##install.packages('ggplot2')
+library(ggplot2)
+```
+```{r}
+summary(mpg)
+
+```
+
+## problem 4
+
+```{r}
+ct = mpg$cty
+hw = mpg$hwy
+combine = ct + hw
+mpg$toteff = combine
+top3 = mpg[c(222, 213, 223),]
+top3
+```
+
+## problem 5
+```{r}
+boop = length(which(mpg$class == "compact"))
+print('the total number of compacts is:')
+boop
+```
+## Problem 6
+```{r}
+plot(mpg$hwy, mpg$cty)
+```
+This graph shows that there are some redundancies in the data since there are many of the same car resulting in less data being shown on the map as they overlap or closely overlap.
+
+## Problem 7
+
+```{r}
+plot(mpg$year, mpg$toteff)
+```
+```{r}
+library(dplyr)
+```
+```{r}
+data = mpg %>%
+  group_by(year) %>%
+  summarize(averageMPG = mean(toteff))
+print(data)
+```
+The effeciency of the cars went down as the years progressed having a result of less average miles per gallon in 2008 versus 1999.
+
